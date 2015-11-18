@@ -24,7 +24,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.False);
         }
 
-        [Test, Ignore]
+        [Test]
         public void NullReturnsNull()
         {
             var json = "null";
