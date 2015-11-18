@@ -33,5 +33,15 @@ namespace JsonParser.Tests
 
             Assert.That(result, Is.Null);
         }
+
+        [Test, Ignore]
+        public void StringWithoutEscapeSequencesReturnsString()
+        {
+            var json = @"""Hello, world!""";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.EqualTo("Hello, world!"));
+        }
     }
 }
