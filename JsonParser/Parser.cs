@@ -24,7 +24,7 @@ namespace JsonParser
                 from t in Parse.String("false")
                 select (object)false;
 
-            return trueParser;
+            return trueParser.Or(falseParser);
         }
     }
 }
