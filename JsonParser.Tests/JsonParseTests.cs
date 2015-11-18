@@ -34,7 +34,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.Null);
         }
 
-        [Test, Ignore]
+        [Test]
         public void StringWithoutEscapeSequencesReturnsString()
         {
             var json = @"""Hello, world!""";
