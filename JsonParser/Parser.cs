@@ -17,6 +17,11 @@ namespace JsonParser
 
         private static Parser<string> GetStringParser()
         {
+            var escapedQuoteParser =
+                from backslash in Parse.Char('\\')
+                from quote in Parse.Char('"')
+                select quote;
+
             var nonescapedCharParser = Parse.CharExcept('"');
 
             var stringParser =
