@@ -17,13 +17,13 @@ namespace JsonParser
 
         private static Parser<string> GetStringParser()
         {
-            var unescapedStringParser =
+            var stringParser =
                 from q1 in Parse.Char('"')
                 from value in Parse.CharExcept('"').Many().Text()
                 from q2 in Parse.Char('"')
                 select value;
 
-            return unescapedStringParser;
+            return stringParser;
         }
 
         private static Parser<object> GetLiteralParser()
