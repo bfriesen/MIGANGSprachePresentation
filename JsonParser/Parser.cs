@@ -22,6 +22,11 @@ namespace JsonParser
                 from quote in Parse.Char('"')
                 select quote;
 
+            var escapedBackslashParser =
+                from backslash1 in Parse.Char('\\')
+                from backslash2 in Parse.Char('\\')
+                select backslash2;
+
             var nonescapedCharParser = Parse.CharExcept('"');
 
             var stringParser =
