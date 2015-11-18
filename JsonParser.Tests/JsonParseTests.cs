@@ -4,7 +4,7 @@ namespace JsonParser.Tests
 {
     public class JsonParseTests
     {
-        [Test, Ignore]
+        [Test]
         public void TrueReturnsTrue()
         {
             var json = "true";
