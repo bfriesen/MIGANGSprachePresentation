@@ -55,7 +55,7 @@ namespace JsonParser.Tests
         }
 
         [Test]
-        public void StringWithEscapedBackslashesReturnsString()
+        public void StringWithEScapedBackslashesReturnsString()
         {
             var json = @"""c:\\dev\\code\\foo.cs""";
 
