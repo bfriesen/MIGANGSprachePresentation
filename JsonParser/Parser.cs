@@ -19,6 +19,7 @@ namespace JsonParser
         private static Parser<object> GetNumberParser()
         {
             var intParser =
+                from negativeSign in Parse.Char('-').Optional()
                 from stringValue in Parse.Numeric.AtLeastOnce().Text()
                 select (object)int.Parse(stringValue);
 
