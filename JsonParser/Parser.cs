@@ -18,6 +18,13 @@ namespace JsonParser
 
         private static Parser<object> GetNumberParser()
         {
+            var doubleParser =
+                from negativeSign in Parse.Char('-').Optional()
+                from wholePart in Parse.Numeric.AtLeastOnce().Text()
+                from dot in Parse.Char('.')
+                from decimalPart in Parse.Numeric.AtLeastOnce().Text()
+                select (object)(double.Parse(wholePart + dot + decimalPart) * (negativeSign.IsDefined ? -1 : 1));
+
             var intParser =
                 from negativeSign in Parse.Char('-').Optional()
                 from stringValue in Parse.Numeric.AtLeastOnce().Text()
