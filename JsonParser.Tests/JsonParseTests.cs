@@ -64,7 +64,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.EqualTo(@"c:\dev\code\foo.cs"));
         }
 
-        [Test, Ignore]
+        [Test]
         public void NumberWithNoDecimalPlaceReturnsInt()
         {
             var json = @"123";
