@@ -86,7 +86,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.InstanceOf<int>());
         }
 
-        [Test, Ignore]
+        [Test]
         public void NumberWithDecimalPlaceReturnsDouble()
         {
             var json = @"123.45";
