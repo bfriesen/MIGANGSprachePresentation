@@ -28,6 +28,12 @@ namespace JsonParser
             return objectParser;
         }
 
+        private class MainParser
+        {
+            public string Name;
+            public object Value;
+        }
+
         private static Parser<object> GetNumberParser()
         {
             var doubleParser =
