@@ -30,7 +30,7 @@ namespace JsonParser
                 from stringValue in Parse.Numeric.AtLeastOnce().Text()
                 select (object)(int.Parse(stringValue) * (negativeSign.IsDefined ? -1 : 1));
 
-            return intParser;
+            return doubleParser.Or(intParser);
         }
 
         private static Parser<string> GetStringParser()
