@@ -138,5 +138,19 @@ namespace JsonParser.Tests
             Assert.That(d.Count, Is.EqualTo(1));
             Assert.That(result.foo, Is.True);
         }
+
+        [Test]
+        public void ObjectWithOneObjectPropertyReturnsExpandoObject()
+        {
+            var json = @"{""foo"":{""bar"":true}}";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.InstanceOf<ExpandoObject>());
+
+            var d = (IDictionary<string, object>)result;
+
+            Assert.That(result.foo.bar, Is.True);
+        }
     }
 }
