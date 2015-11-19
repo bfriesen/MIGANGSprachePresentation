@@ -21,7 +21,7 @@ namespace JsonParser
             var intParser =
                 from negativeSign in Parse.Char('-').Optional()
                 from stringValue in Parse.Numeric.AtLeastOnce().Text()
-                select (object)int.Parse(stringValue);
+                select (object)(int.Parse(stringValue) * (negativeSign.IsDefined ? -1 : 1));
 
             return intParser;
         }
