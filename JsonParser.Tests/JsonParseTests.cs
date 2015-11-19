@@ -75,7 +75,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.InstanceOf<int>());
         }
 
-        [Test, Ignore]
+        [Test]
         public void NegativeNumberWithNoDecimalPlaceReturnsInt()
         {
             var json = @"-123";
