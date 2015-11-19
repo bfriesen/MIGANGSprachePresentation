@@ -22,6 +22,12 @@ namespace JsonParser
 
         private static Parser<object> GetObjectParser(Parser<string> stringParser, MainParser mainParser)
         {
+            var memberParser =
+                from name in stringParser
+                from colon in Parse.Char(':')
+                from value in Parse.Ref(() => mainParser.Value)
+                select new Member { Name = name, Value = value };
+
             var objectParser =
                 from openBrace in Parse.Char('{')
                 from closeBrace in Parse.Char('}')
