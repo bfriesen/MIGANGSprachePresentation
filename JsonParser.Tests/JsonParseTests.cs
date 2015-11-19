@@ -191,5 +191,20 @@ namespace JsonParser.Tests
             Assert.That(result.Length, Is.EqualTo(1));
             Assert.That(result[0], Is.True);
         }
+
+        [Test, Ignore]
+        public void ArrayWithMultipleItemReturnsObjectArray()
+        {
+            var json = @"[true,false,null]";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.InstanceOf<object[]>());
+
+            Assert.That(result.Length, Is.EqualTo(3));
+            Assert.That(result[0], Is.True);
+            Assert.That(result[1], Is.False);
+            Assert.That(result[2], Is.Null);
+        }
     }
 }

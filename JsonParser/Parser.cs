@@ -27,17 +27,26 @@ namespace JsonParser
             return
                 from openBracket in Parse.Char('[')
                 from firstItem in Parse.Ref(() => mainParser.Value).Optional()
+                from otherItems in
+                    (from comma in Parse.Char(',')
+                     from item in Parse.Ref(() => mainParser.Value)
+                     select item).Many()
                 from closeBracket in Parse.Char(']')
-                select GetObjectArray(firstItem);
+                select GetObjectArray(firstItem, otherItems);
         }
 
-        private static object[] GetObjectArray(IOption<object> firstItem)
+        private static object[] GetObjectArray(IOption<object> firstItem, IEnumerable<object> otherItems)
         {
             var list = new List<object>();
 
             if (firstItem.IsDefined)
             {
                 list.Add(firstItem.Get());
+            }
+
+            foreach (var item in otherItems)
+            {
+                list.Add(item);
             }
 
             return list.ToArray();
