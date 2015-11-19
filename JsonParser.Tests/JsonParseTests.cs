@@ -152,5 +152,22 @@ namespace JsonParser.Tests
 
             Assert.That(result.foo.bar, Is.True);
         }
+
+        [Test, Ignore]
+        public void ObjectWithMultiplePropertiesReturnsExpandoObject()
+        {
+            var json = @"{""foo"":true,""bar"":false,""baz"":null}";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.InstanceOf<ExpandoObject>());
+
+            var d = (IDictionary<string, object>)result;
+
+            Assert.That(d.Count, Is.EqualTo(3));
+            Assert.That(result.foo, Is.True);
+            Assert.That(result.bar, Is.False);
+            Assert.That(result.baz, Is.Null);
+        }
     }
 }
