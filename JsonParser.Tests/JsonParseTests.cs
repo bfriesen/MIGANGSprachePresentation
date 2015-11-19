@@ -96,5 +96,16 @@ namespace JsonParser.Tests
             Assert.That(result, Is.EqualTo(123.45));
             Assert.That(result, Is.InstanceOf<double>());
         }
+
+        [Test]
+        public void NegativeNumberWithDecimalPlaceReturnsDouble()
+        {
+            var json = @"-123.45";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.EqualTo(-123.45));
+            Assert.That(result, Is.InstanceOf<double>());
+        }
     }
 }
