@@ -30,16 +30,19 @@ namespace JsonParser
 
             var objectParser =
                 from openBrace in Parse.Char('{')
-                from firstMemeber in memberParser.Optional()
+                from firstMember in memberParser.Optional()
                 from closeBrace in Parse.Char('}')
-                select GetExpandoObject(firstMemeber);
+                select GetExpandoObject(firstMember);
 
             return objectParser;
         }
 
-        private static ExpandoObject GetExpandoObject(IOption<Member> firstMemeber)
+        private static ExpandoObject GetExpandoObject(IOption<Member> firstMember)
         {
-            return new ExpandoObject();
+            var expandoObject = new ExpandoObject();
+
+
+            return expandoObject;
         }
 
         private class MainParser
