@@ -110,7 +110,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.InstanceOf<double>());
         }
 
-        [Test, Ignore]
+        [Test]
         public void EmptyObjectReturnsExpandoObject()
         {
             var json = @"{}";
