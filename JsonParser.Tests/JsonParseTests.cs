@@ -206,5 +206,15 @@ namespace JsonParser.Tests
             Assert.That(result[1], Is.False);
             Assert.That(result[2], Is.Null);
         }
+
+        [Test, Ignore]
+        public void LeadingWhitespaceIsIgnored()
+        {
+            var json = "      true";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.True);
+        }
     }
 }
