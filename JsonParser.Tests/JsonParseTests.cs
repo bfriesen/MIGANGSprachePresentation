@@ -192,7 +192,7 @@ namespace JsonParser.Tests
             Assert.That(result[0], Is.True);
         }
 
-        [Test, Ignore]
+        [Test]
         public void ArrayWithMultipleItemReturnsObjectArray()
         {
             var json = @"[true,false,null]";
