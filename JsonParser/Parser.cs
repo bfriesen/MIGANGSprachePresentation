@@ -31,7 +31,8 @@ namespace JsonParser
 
             var stringParser =
                 from q1 in Parse.Char('"')
-                from value in escapedBackslashParser.Or(escapedQuoteParser).Or(nonescapedCharParser).Many().Text()
+                from value in escapedBackslashParser.Or(escapedQuoteParser).Or(nonescapedCharParser)
+                    .Many().Text()
                 from q2 in Parse.Char('"')
                 select value;
 
