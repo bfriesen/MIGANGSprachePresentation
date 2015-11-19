@@ -168,7 +168,7 @@ namespace JsonParser.Tests
             Assert.That(result.baz, Is.Null);
         }
 
-        [Test, Ignore]
+        [Test]
         public void EmptyArrayReturnsObjectArray()
         {
             var json = @"[]";
