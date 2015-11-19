@@ -148,12 +148,10 @@ namespace JsonParser.Tests
 
             Assert.That(result, Is.InstanceOf<ExpandoObject>());
 
-            var d = (IDictionary<string, object>)result;
-
             Assert.That(result.foo.bar, Is.True);
         }
 
-        [Test, Ignore]
+        [Test]
         public void ObjectWithMultiplePropertiesReturnsExpandoObject()
         {
             var json = @"{""foo"":true,""bar"":false,""baz"":null}";
