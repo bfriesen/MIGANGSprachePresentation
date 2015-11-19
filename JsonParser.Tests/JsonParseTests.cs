@@ -124,7 +124,7 @@ namespace JsonParser.Tests
             Assert.That(d, Is.Empty);
         }
 
-        [Test, Ignore]
+        [Test]
         public void ObjectWithOnePropertyReturnsExpandoObject()
         {
             var json = @"{""foo"":true}";
