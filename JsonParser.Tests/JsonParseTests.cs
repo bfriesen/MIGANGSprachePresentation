@@ -86,15 +86,15 @@ namespace JsonParser.Tests
             Assert.That(result, Is.InstanceOf<int>());
         }
 
-        [Test]
+        [Test, Ignore]
         public void NumberWithDecimalPlaceReturnsDouble()
         {
-            var json = @"123";
+            var json = @"123.45";
 
             var result = Json.Parse(json);
 
-            Assert.That(result, Is.EqualTo(123));
-            Assert.That(result, Is.InstanceOf<int>());
+            Assert.That(result, Is.EqualTo(123.45));
+            Assert.That(result, Is.InstanceOf<double>());
         }
     }
 }
