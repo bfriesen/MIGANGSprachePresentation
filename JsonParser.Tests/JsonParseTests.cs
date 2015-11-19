@@ -227,7 +227,7 @@ namespace JsonParser.Tests
             Assert.That(result, Is.True);
         }
 
-        [Test, Ignore]
+        [Test]
         public void WhitespaceAroundControlCharactersIsIgnored()
         {
             var json = @" { ""foo"" :	[	true ,
