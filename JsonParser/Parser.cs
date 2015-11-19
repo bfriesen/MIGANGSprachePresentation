@@ -17,7 +17,7 @@ namespace JsonParser
             var objectParser = GetObjectParser(stringParser, mainParser);
             var arrayParser = GetArrayParser(mainParser);
 
-            mainParser.Value = literalParser.Or(stringParser).Or(numberParser).Or(objectParser).Or(arrayParser);
+            mainParser.Value = literalParser.Or(stringParser).Or(numberParser).Or(objectParser).Or(arrayParser).Token();
 
             return mainParser.Value.Parse;
         }
