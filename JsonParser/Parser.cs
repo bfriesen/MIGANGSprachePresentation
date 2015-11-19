@@ -33,9 +33,14 @@ namespace JsonParser
 
         private static object[] GetObjectArray(IOption<object> firstItem)
         {
+            var list = new List<object>();
 
+            if (firstItem.IsDefined)
+            {
+                list.Add(firstItem.Get());
+            }
 
-            return new object[0];
+            return list.ToArray();
         }
 
         private static Parser<object> GetObjectParser(Parser<string> stringParser, MainParser mainParser)
