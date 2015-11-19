@@ -216,5 +216,15 @@ namespace JsonParser.Tests
 
             Assert.That(result, Is.True);
         }
+
+        [Test]
+        public void TrailingWhitespaceIsIgnored()
+        {
+            var json = "true      ";
+
+            var result = Json.Parse(json);
+
+            Assert.That(result, Is.True);
+        }
     }
 }
