@@ -8,17 +8,19 @@ namespace JsonParser
     {
         public static Func<string, object> GetJsonParser()
         {
+            var mainParser = new MainParser();
+
             var literalParser = GetLiteralParser();
             var stringParser = GetStringParser();
             var numberParser = GetNumberParser();
-            var objectParser = GetObjectParser();
+            var objectParser = GetObjectParser(stringParser, mainParser);
 
-            var mainParser = literalParser.Or(stringParser).Or(numberParser).Or(objectParser);
+            mainParser.Value = literalParser.Or(stringParser).Or(numberParser).Or(objectParser);
 
-            return mainParser.Parse;
+            return mainParser.Value.Parse;
         }
 
-        private static Parser<object> GetObjectParser()
+        private static Parser<object> GetObjectParser(Parser<string> stringParser, MainParser mainParser)
         {
             var objectParser =
                 from openBrace in Parse.Char('{')
@@ -29,6 +31,11 @@ namespace JsonParser
         }
 
         private class MainParser
+        {
+            public Parser<object> Value;
+        }
+
+        private class Member
         {
             public string Name;
             public object Value;
